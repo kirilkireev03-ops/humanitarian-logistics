@@ -1,0 +1,38 @@
+# Локальний запуск без PostgreSQL (вбудована H2 у пам'яті)
+spring:
+  messages:
+    encoding: UTF-8
+  datasource:
+    url: jdbc:h2:mem:logistics;DB_CLOSE_DELAY=-1;MODE=PostgreSQL
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  h2:
+    console:
+      enabled: false
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.H2Dialect
+    properties:
+      hibernate:
+        default_schema: PUBLIC
+
+server:
+  servlet:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+
+app:
+  jwt:
+    issuer: humanitarian-logistics
+    secret: ${APP_JWT_SECRET:change-me-change-me-change-me-change-me}
+    accessTtlSeconds: ${APP_JWT_ACCESS_TTL_SECONDS:28800}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health

@@ -1,0 +1,43 @@
+/* Midnight Amethyst — Recharts line glow (neon mint / electric cyan) */
+
+.hl-dash {
+  --hl-ice-line: #00e5ff;
+  --hl-ice-glow: rgba(0, 229, 255, 0.55);
+}
+
+.hl-dash .hl-tx-hero path.recharts-area-curve {
+  animation: hl-arctic-line-glow 2.8s ease-in-out infinite;
+  filter: drop-shadow(0 0 6px rgba(0, 255, 163, 0.45)) drop-shadow(0 0 14px rgba(0, 255, 163, 0.28));
+}
+
+.hl-dash .hl-tx-ice path.recharts-area-curve {
+  animation: hl-arctic-line-glow-ice 3.2s ease-in-out infinite;
+  filter: drop-shadow(0 0 6px rgba(0, 229, 255, 0.45)) drop-shadow(0 0 14px rgba(0, 229, 255, 0.25));
+}
+
+@keyframes hl-arctic-line-glow {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 5px rgba(0, 255, 163, 0.35)) drop-shadow(0 0 12px rgba(0, 255, 163, 0.2));
+  }
+  50% {
+    filter: drop-shadow(0 0 12px rgba(0, 255, 163, 0.85)) drop-shadow(0 0 22px rgba(0, 255, 163, 0.4));
+  }
+}
+
+@keyframes hl-arctic-line-glow-ice {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 5px rgba(0, 229, 255, 0.32)) drop-shadow(0 0 12px rgba(0, 229, 255, 0.18));
+  }
+  50% {
+    filter: drop-shadow(0 0 12px rgba(0, 229, 255, 0.8)) drop-shadow(0 0 22px rgba(0, 229, 255, 0.38));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hl-dash .hl-tx-hero path.recharts-area-curve,
+  .hl-dash .hl-tx-ice path.recharts-area-curve {
+    animation: none;
+  }
+}
